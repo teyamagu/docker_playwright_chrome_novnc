@@ -1,5 +1,4 @@
-import { chromium } from 'playwright';
-const { test, expect } = require('@playwright/test');
+import { chromium, test, expect } from '@playwright/test';
 
 test('テスターちゃんのサイトが表示されるか', async() => {
     const browser = await chromium.launch({ headless: false });

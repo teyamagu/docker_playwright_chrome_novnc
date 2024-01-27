@@ -14,15 +14,14 @@ RUN apt-get install -y google-chrome-stable dbus
 # japanese font setting and install
 ENV LANGUAGE ja_JP.UTF-8
 ENV LANG ja_JP.UTF-8
-RUN apt-get install -y --no-install-recommends locales && \
+RUN apt-get -y install --no-install-recommends locales && \
     locale-gen ja_JP.UTF-8 && \
-    apt-get install -y --no-install-recommends fonts-ipafont
+    apt-get -y install --no-install-recommends fonts-ipafont
 
 # playwright install and vnc setting
 RUN apt-get update && apt-get -y install x11vnc websockify novnc
 RUN npm update -g npm
-RUN npm init -y
-RUN npm install playwright-core
+RUN npm init -y && npm -y install @playwright/test
 
 COPY docker-init.sh /
 

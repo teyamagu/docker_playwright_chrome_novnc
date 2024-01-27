@@ -31,20 +31,7 @@ https://www.docker.com/ja-jp/
 
 ```docker-compose up -d```
 
-## 2.dockerコンテナの中に入る
-以下でdockerコンテナの中に入ります。
-
-```docker exec -it playwright bash```
-
-## 3.仮想ディスプレイを立ち上げる
-以下で仮想ディスプレイを立ち上げます。
-```./start.sh```
-
-> "Permission denied"と表示される方は`chmod 755 ./start.sh`を一度実行してから行ってみてください。
-
-> テスト実行時のブラウザが動く様子を見なくていい場合は3.と4.は必要はありません
-
-## 4.ホスト側のブラウザで仮想ディスプレイを見る
+## 2.ホスト側のブラウザで仮想ディスプレイを見る
 ホスト側（dockerコンテナではなく、いつものパソコンのほう）のブラウザのアドレスに以下を入力しenterを押す。
 
 ```http://localhost:8010/vnc.html```
@@ -52,14 +39,19 @@ https://www.docker.com/ja-jp/
 「noVNC connect」とでるので、connectをクリックする。真っ黒い画面が出たら成功です。
 
 # テスト実行からレポート確認までの流れ
-## 1.docker側でplaywrightを実行する
-dockerコンテナのほうで、以下を入力すればplaywrightが実行されます。
+## 1.dockerコンテナの中に入る
+以下でdockerコンテナの中に入ります。
+
+```docker exec -it playwright bash```
+
+## 2.docker側でplaywrightを実行する
+dockerコンテナ内で、以下を入力すればplaywrightが実行されます。
 
 このとき、実行の様子が4で開いたブラウザに表示されます。（--headedが実際にブラウザを表示する意味）
 
 ```npx playwright test --headed```
 
-## 2.レポートを確認する
+## 3.レポートを確認する
 実行が完了したら、ホスト側のブラウザのアドレスに以下を入力しenterを推すとレポートが見れます。
 
 ```localhost:9323```
