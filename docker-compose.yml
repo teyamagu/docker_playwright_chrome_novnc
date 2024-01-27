@@ -2,6 +2,7 @@ version: '3'
 
 services:
   playwright:
+    platform: linux/x86_64 # chromeはapple silicon版がないので明にplatformを指定する
     build: ./docker/playwright
     container_name: playwright
     tty: true
@@ -11,5 +12,6 @@ services:
     volumes:
       - ./mount:/app
       - /app/node_modules
+    ipc: host # 未設定の場合、chromeのプロセス感通信でクラッシュするため設定する
     environment:
       - DISPLAY=:10

@@ -43,24 +43,24 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome']
-      }
-    },
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox']
-      }
-    },
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari']
-      }
-    }
+    // {
+    //   name: 'chromium',
+    //   use: {
+    //     ...devices['Desktop Chrome']
+    //   }
+    // },
+    // {
+    //   name: 'firefox',
+    //   use: {
+    //     ...devices['Desktop Firefox']
+    //   }
+    // },
+    // {
+    //   name: 'webkit',
+    //   use: {
+    //     ...devices['Desktop Safari']
+    //   }
+    // }
 
     /* Test against mobile viewports. */
     // {
@@ -83,12 +83,18 @@ const config: PlaywrightTestConfig = {
     //     channel: 'msedge',
     //   },
     // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: {
-    //     channel: 'chrome',
-    //   },
-    // },
+    {
+      name: 'Google Chrome',
+      use: {
+        channel: 'chrome',
+      },
+      args: [
+        // '--disable-dev-shm-usage',
+        '--no-sandbox',
+        '--disable-features=dbus',
+        '--disable-gpu'
+      ],
+    },
   ]
 }
 

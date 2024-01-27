@@ -5,3 +5,6 @@ Xvfb :10 -screen 0 1920x1080x16 &
 x11vnc -rfbport 5910 -forever -localhost &
 # websockifyでホスト側のブラウザで見れるようにする。8010ポートとlocalhostの5910をつなげている
 websockify --web=/usr/share/novnc 8010 localhost:5910 &
+
+# 実行させっぱなしにする
+tail -F /dev/nul
